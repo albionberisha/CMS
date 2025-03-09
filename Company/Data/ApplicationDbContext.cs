@@ -1,7 +1,9 @@
-﻿using Company.Data.Entities;
+﻿using CompanyAndLibrary.Data.Entities.Company;
+using CompanyAndLibrary.Data.Entities.Company.Library;
+using Humanizer;
 using Microsoft.EntityFrameworkCore;
 
-namespace Company.Data
+namespace CompanyAndLibrary.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -16,6 +18,16 @@ namespace Company.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<EmployeeProject> EmployeeProjects { get; set; }
         public DbSet<DepartmentLocation> DepartmentLocations { get; set; }
+
+        public DbSet<Reader> Readers { get; set; }
+        public DbSet<ReaderPhoneNumber> ReaderPhoneNumbers { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Copy> Copies { get; set; }
+        public DbSet<Borrow> Borrows { get; set; }
+        public DbSet<InCat> InCats { get; set; }
+        public DbSet<Publishes> Publishes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -71,6 +83,24 @@ namespace Company.Data
                 .WithOne()
                 .HasForeignKey<Address>(a => a.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure composite key for ReaderPhoneNumber
+            modelBuilder.Entity<ReaderPhoneNumber>()
+                .HasKey(rp => new { rp.ReaderNr, rp.PhoneNumber });
+
+            // Configure composite key for Borrows
+            modelBuilder.Entity<Borrow>()
+                .HasKey(b => new { b.ReaderNr, b.CopyNr });
+
+            // Configure composite key for InCat
+            modelBuilder.Entity<InCat>()
+                .HasKey(ic => new { ic.Isbn, ic.CatName });
+
+            // Configure composite key for Publishes
+            modelBuilder.Entity<Publishes>()
+                .HasKey(p => new { p.Isbn, p.PubName });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 

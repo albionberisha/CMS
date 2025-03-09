@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Company.Data;
-using Company.Data.Entities;
+using CompanyAndLibrary.Data;
+using CompanyAndLibrary.Data.Entities.Company;
 
-namespace Company.Controllers
+namespace CompanyAndLibrary.Controllers
 {
     public class ManagersController : Controller
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Company.Data.Entities
+namespace CompanyAndLibrary.Data.Entities.Company
 {
     public class Address
     {

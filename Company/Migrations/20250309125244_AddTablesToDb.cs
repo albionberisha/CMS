@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Company.Migrations
+namespace CompanyAndLibrary.Migrations
 {
     /// <inheritdoc />
     public partial class AddTablesToDb : Migration

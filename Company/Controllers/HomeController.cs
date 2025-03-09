@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Company.Models;
+using CompanyAndLibrary.Models;
 
-namespace Company.Controllers;
+namespace CompanyAndLibrary.Controllers;
 
 public class HomeController : Controller
 {
@@ -19,6 +19,16 @@ public class HomeController : Controller
     }
 
     public IActionResult Er()
+    {
+        return View();
+    }
+
+    public IActionResult Rm()
+    {
+        return View();
+    }
+
+    public IActionResult Db()
     {
         return View();
     }
